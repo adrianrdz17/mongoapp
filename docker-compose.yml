@@ -1,0 +1,19 @@
+# Indicamos la version a utilizar de docker
+version: '3.9'
+services:
+    chanchito:
+        # aqui toma la ruta del Dockerfile (en este caso, la misma)
+        build: .
+        # Contenedor:Sistema Anfitrion
+        ports:
+            - '3000:3000'
+        links:
+            - monguito
+
+    monguito:
+        image: mongo
+        ports:
+            - '27017:27017'
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=nico
+            - MONGO_INITDB_ROOT_PASSWORD=password
